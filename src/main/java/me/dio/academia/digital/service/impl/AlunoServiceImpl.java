@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.dio.academia.digital.entity.Aluno;
+import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AlunoForm;
 import me.dio.academia.digital.entity.form.AlunoUpdateForm;
 import me.dio.academia.digital.repository.AlunoRepository;
@@ -52,5 +53,13 @@ public class AlunoServiceImpl implements IAlunoService {
         aluno.setDataDeNascimento(formUpdate.getDataDeNascimento());
         return repository.save(aluno);
     }
+
+    @Override
+    public List<AvaliacaoFisica> getAllAvaliacaoFisica(Long id) {
+        Aluno aluno = repository.getById(id);
+        return aluno.getAvaliacoes();
+    }
+
+    
     
 }

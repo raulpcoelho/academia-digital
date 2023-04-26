@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.dio.academia.digital.entity.Aluno;
+import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AlunoForm;
 import me.dio.academia.digital.entity.form.AlunoUpdateForm;
 import me.dio.academia.digital.service.impl.AlunoServiceImpl;
@@ -47,6 +48,11 @@ public class AlunoController {
     @PutMapping("/{id}")
     public Aluno update(@PathVariable Long id, @RequestBody AlunoUpdateForm form) {
         return service.update(id, form);
+    }
+
+    @GetMapping("/{id}/avaliacoes")
+    public List<AvaliacaoFisica> getAllAvaliacaoFisica(@PathVariable Long id) {
+        return service.getAllAvaliacaoFisica(id);
     }
 
 }
